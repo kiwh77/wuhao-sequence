@@ -1,0 +1,32 @@
+{
+  "name": "wuhao-sequence",
+  "version": "1.0.0",
+  "description": "Serialize data from template output",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/types",
+  "bin": {
+    "mario-create": "dist/cli"
+  },
+  "scripts": {
+    "serve": "tsc -w",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "handlebars": "^4.7.7",
+    "openapi-typescript": "^6.2.0",
+    "wh-logsets": "^1.0.43"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^18.15.8",
+    "js-yaml": "^4.1.0",
+    "logsets": "^1.0.42",
+    "ts-essentials": "^9.3.1",
+    "typescript": "^5.0.2"
+  }
+}

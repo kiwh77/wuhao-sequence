@@ -1,0 +1,3881 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/user/list": {
+      "get": {
+        "operationId": "UserController_list",
+        "summary": "查询用户列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "用户id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/page": {
+      "get": {
+        "operationId": "UserController_page",
+        "summary": "查询用户分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/info/{id}": {
+      "get": {
+        "operationId": "UserController_info",
+        "summary": "查询用户详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/detail": {
+      "get": {
+        "operationId": "UserController_detail",
+        "summary": "查询当前用户详情",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/elements": {
+      "get": {
+        "operationId": "UserController_elements",
+        "summary": "查询用户资源",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/create": {
+      "post": {
+        "operationId": "UserController_create",
+        "summary": "创建用户",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/update/{id}": {
+      "put": {
+        "operationId": "UserController_update",
+        "summary": "更新用户信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/destroy/{id}": {
+      "delete": {
+        "operationId": "UserController_destroy",
+        "summary": "删除用户",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/group/list": {
+      "get": {
+        "operationId": "UserController_group_list",
+        "summary": "查询用户分组列表",
+        "parameters": [
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "用户分组名称",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/group/create": {
+      "post": {
+        "operationId": "UserController_group_create",
+        "summary": "创建用户分组",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserGroupCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/group/update/{id}": {
+      "put": {
+        "operationId": "UserController_group_update",
+        "summary": "更新用户分组",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserGroupUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/user/group/destroy/{id}": {
+      "delete": {
+        "operationId": "UserController_group_destroy",
+        "summary": "删除用户分组",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/list": {
+      "get": {
+        "operationId": "RoleController_list",
+        "summary": "查询用户列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "角色id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "角色名称",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/page": {
+      "get": {
+        "operationId": "RoleController_page",
+        "summary": "查询用户分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "角色id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "角色名称",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/info/{id}": {
+      "get": {
+        "operationId": "RoleController_info",
+        "summary": "查询用户详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/create": {
+      "post": {
+        "operationId": "RoleController_create",
+        "summary": "创建用户",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RoleCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/update/{id}": {
+      "put": {
+        "operationId": "RoleController_update",
+        "summary": "更新用户信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RoleUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/destroy/{id}": {
+      "delete": {
+        "operationId": "RoleController_destroy",
+        "summary": "删除用户",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/group/list": {
+      "get": {
+        "operationId": "RoleController_group_list",
+        "summary": "查询用户分组列表",
+        "parameters": [
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "角色分组名称",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/group/create": {
+      "post": {
+        "operationId": "RoleController_group_create",
+        "summary": "创建用户分组",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RoleGroupCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/group/update/{id}": {
+      "put": {
+        "operationId": "RoleController_group_update",
+        "summary": "更新用户分组",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RoleGroupUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/role/group/destroy/{id}": {
+      "delete": {
+        "operationId": "RoleController_group_destroy",
+        "summary": "删除用户分组",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["角色"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "summary": "登录",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LoginDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["鉴权"]
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "summary": "注册",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RegisterDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["鉴权"]
+      }
+    },
+    "/auth/captcha/img/verify": {
+      "post": {
+        "operationId": "AuthController_verifyImgCaptcha",
+        "summary": "验证图形验证码",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CaptchaDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["鉴权"]
+      }
+    },
+    "/auth/captcha/img": {
+      "post": {
+        "operationId": "AuthController_img_captcha",
+        "summary": "获取图形验证码",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ImgCaptchaDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["鉴权"]
+      }
+    },
+    "/auth/captcha/sms": {
+      "post": {
+        "operationId": "AuthController_captcha_sms",
+        "summary": "短信验证码",
+        "description": "发送短信验证码，需要提供图形验证码信息",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SmsCaptchaDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["鉴权"]
+      }
+    },
+    "/auth/refresh/token": {
+      "post": {
+        "operationId": "AuthController_refreshToken",
+        "summary": "刷新token",
+        "description": "通过refresh_token获取新的access_token",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RefreshTokenDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["鉴权"]
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "summary": "注销登录",
+        "description": "注销登录将把用户token等信息清除，包括refresh_token",
+        "parameters": [],
+        "responses": { "201": { "description": "" } },
+        "tags": ["鉴权"]
+      }
+    },
+    "/org/list": {
+      "get": {
+        "operationId": "OrgController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/page": {
+      "get": {
+        "operationId": "OrgController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/info/{id}": {
+      "get": {
+        "operationId": "OrgController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/create": {
+      "post": {
+        "operationId": "OrgController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrgCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/update/{id}": {
+      "put": {
+        "operationId": "OrgController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrgUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/destroy/{id}": {
+      "delete": {
+        "operationId": "OrgController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/perm/list": {
+      "get": {
+        "operationId": "PermController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["权限"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/perm/page": {
+      "get": {
+        "operationId": "PermController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["权限"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/perm/info/{id}": {
+      "get": {
+        "operationId": "PermController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["权限"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/perm/create": {
+      "post": {
+        "operationId": "PermController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PermCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["权限"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/perm/update/{id}": {
+      "put": {
+        "operationId": "PermController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PermUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["权限"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/perm/destroy/{id}": {
+      "delete": {
+        "operationId": "PermController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["权限"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/res/element/list": {
+      "get": {
+        "operationId": "ElementController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "permId",
+            "required": false,
+            "in": "query",
+            "description": "权限组id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "名称",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["前端资源"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/res/element/page": {
+      "get": {
+        "operationId": "ElementController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "permId",
+            "required": false,
+            "in": "query",
+            "description": "权限组id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "名称",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["前端资源"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/res/element/info/{id}": {
+      "get": {
+        "operationId": "ElementController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["前端资源"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/res/element/create": {
+      "post": {
+        "operationId": "ElementController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ElementCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["前端资源"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/res/element/update/{id}": {
+      "put": {
+        "operationId": "ElementController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ElementUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["前端资源"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/rbac/res/element/destroy/{id}": {
+      "delete": {
+        "operationId": "ElementController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["前端资源"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/conf/list": {
+      "get": {
+        "operationId": "OrgConfController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/conf/page": {
+      "get": {
+        "operationId": "OrgConfController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/conf/info/{id}": {
+      "get": {
+        "operationId": "OrgConfController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/conf/create": {
+      "post": {
+        "operationId": "OrgConfController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrgConfCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/conf/update/{id}": {
+      "put": {
+        "operationId": "OrgConfController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrgConfUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/org/conf/destroy/{id}": {
+      "delete": {
+        "operationId": "OrgConfController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["组织"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/order/list": {
+      "get": {
+        "operationId": "OrderController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "billTime",
+            "required": false,
+            "in": "query",
+            "description": "出账时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "合同状态",
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["订单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/order/page": {
+      "get": {
+        "operationId": "OrderController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["订单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/order/info/{id}": {
+      "get": {
+        "operationId": "OrderController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["订单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/order/create": {
+      "post": {
+        "operationId": "OrderController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["订单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/order/update/{id}": {
+      "put": {
+        "operationId": "OrderController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["订单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/order/destroy/{id}": {
+      "delete": {
+        "operationId": "OrderController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["订单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/list": {
+      "get": {
+        "operationId": "BillController_list",
+        "summary": "查询账单列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "types",
+            "required": false,
+            "in": "query",
+            "description": "状态，逾期：timeout;今日出账：todayout;5天出账：fivedayout",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/page": {
+      "get": {
+        "operationId": "BillController_page",
+        "summary": "查询账单分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/info/{id}": {
+      "get": {
+        "operationId": "BillController_info",
+        "summary": "查询账单详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/create": {
+      "post": {
+        "operationId": "BillController_create",
+        "summary": "创建账单",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BillCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/update/{id}": {
+      "put": {
+        "operationId": "BillController_update",
+        "summary": "更新账单信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BillUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/destroy/{id}": {
+      "delete": {
+        "operationId": "BillController_destroy",
+        "summary": "删除账单",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/paymode/create": {
+      "post": {
+        "operationId": "BillController_createPayMode",
+        "summary": "新增账单支付信息",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BillPayModeCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/bill/paymode/destroy/{id}": {
+      "delete": {
+        "operationId": "BillController_deletePayMode",
+        "summary": "删除账单支付信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["账单"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/list": {
+      "get": {
+        "operationId": "AssetController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "gid",
+            "required": false,
+            "in": "query",
+            "description": "分组id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/page": {
+      "get": {
+        "operationId": "AssetController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "gid",
+            "required": false,
+            "in": "query",
+            "description": "分组id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "物业名称",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "amount",
+            "required": false,
+            "in": "query",
+            "description": "物业价格",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "物业当前状态",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/info/{id}": {
+      "get": {
+        "operationId": "AssetController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/create": {
+      "post": {
+        "operationId": "AssetController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AssetCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/update/{id}": {
+      "put": {
+        "operationId": "AssetController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AssetUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/destroy/{id}": {
+      "delete": {
+        "operationId": "AssetController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/group/list": {
+      "get": {
+        "operationId": "AssetController_group_list",
+        "summary": "查询分组列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/group/create": {
+      "post": {
+        "operationId": "AssetController_group_create",
+        "summary": "创建分组",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AssetGroupCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/group/update/{id}": {
+      "put": {
+        "operationId": "AssetController_group_update",
+        "summary": "更新分组",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AssetGroupUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/asset/group/destroy/{id}": {
+      "delete": {
+        "operationId": "AssetController_group_destroy",
+        "summary": "删除分组",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["物业"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/customer/list": {
+      "get": {
+        "operationId": "CustomerController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "名称，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "tel",
+            "required": false,
+            "in": "query",
+            "description": "手机号码，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "idCard",
+            "required": false,
+            "in": "query",
+            "description": "身份证号，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "province",
+            "required": false,
+            "in": "query",
+            "description": "省，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "city",
+            "required": false,
+            "in": "query",
+            "description": "市，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "district",
+            "required": false,
+            "in": "query",
+            "description": "区，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "address",
+            "required": false,
+            "in": "query",
+            "description": "地址，模糊查询",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["客户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/customer/page": {
+      "get": {
+        "operationId": "CustomerController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "name",
+            "required": false,
+            "in": "query",
+            "description": "名称，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "tel",
+            "required": false,
+            "in": "query",
+            "description": "手机号码，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "idCard",
+            "required": false,
+            "in": "query",
+            "description": "身份证号，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "province",
+            "required": false,
+            "in": "query",
+            "description": "省，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "city",
+            "required": false,
+            "in": "query",
+            "description": "市，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "district",
+            "required": false,
+            "in": "query",
+            "description": "区，模糊查询",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "address",
+            "required": false,
+            "in": "query",
+            "description": "地址，模糊查询",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["客户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/customer/info/{id}": {
+      "get": {
+        "operationId": "CustomerController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["客户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/customer/create": {
+      "post": {
+        "operationId": "CustomerController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CustomerCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["客户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/customer/update/{id}": {
+      "put": {
+        "operationId": "CustomerController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CustomerUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["客户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/customer/destroy/{id}": {
+      "delete": {
+        "operationId": "CustomerController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["客户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/customer/destroy": {
+      "post": {
+        "operationId": "CustomerController_batch_destroy",
+        "summary": "批量删除",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/IdsDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["客户"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/tasset/common": {
+      "get": {
+        "operationId": "TAssetController_common",
+        "summary": "查询公共费用",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["临时物业管理"],
+        "security": [{ "bearer": [] }]
+      },
+      "post": {
+        "operationId": "TAssetController_update_common",
+        "summary": "更新公共费用",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/TAssetCommonUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["临时物业管理"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/tasset/list": {
+      "get": {
+        "operationId": "TAssetController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["临时物业管理"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/tasset/info/{id}": {
+      "get": {
+        "operationId": "TAssetController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "bill",
+            "required": true,
+            "in": "path",
+            "description": "账期",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "bill",
+            "required": true,
+            "in": "query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["临时物业管理"],
+        "security": [{ "bearer": [] }]
+      },
+      "put": {
+        "operationId": "TAssetController_updateInfo",
+        "summary": "更新物业定义",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "bill",
+            "required": true,
+            "in": "path",
+            "description": "账期",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/TAssetInfoUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["临时物业管理"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/house/tasset/update/{id}": {
+      "put": {
+        "operationId": "TAssetController_update",
+        "summary": "更新账单记录",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "bill",
+            "required": true,
+            "in": "path",
+            "description": "账期",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/TAssetUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["临时物业管理"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/conf/list": {
+      "get": {
+        "operationId": "ConfController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["系统配置"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/conf/page": {
+      "get": {
+        "operationId": "ConfController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["系统配置"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/conf/info/{id}": {
+      "get": {
+        "operationId": "ConfController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["系统配置"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/conf/create": {
+      "post": {
+        "operationId": "ConfController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ConfCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["系统配置"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/conf/update/{id}": {
+      "put": {
+        "operationId": "ConfController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ConfUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["系统配置"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/conf/destroy/{id}": {
+      "delete": {
+        "operationId": "ConfController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["系统配置"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/dict/list": {
+      "get": {
+        "operationId": "DictController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["数据字典"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/dict/page": {
+      "get": {
+        "operationId": "DictController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["数据字典"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/dict/info/{id}": {
+      "get": {
+        "operationId": "DictController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["数据字典"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/dict/create": {
+      "post": {
+        "operationId": "DictController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DictCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["数据字典"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/dict/update/{id}": {
+      "put": {
+        "operationId": "DictController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DictUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["数据字典"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/dict/destroy/{id}": {
+      "delete": {
+        "operationId": "DictController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["数据字典"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/notice/list": {
+      "get": {
+        "operationId": "NoticeController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["公告"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/notice/page": {
+      "get": {
+        "operationId": "NoticeController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["公告"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/notice/info/{id}": {
+      "get": {
+        "operationId": "NoticeController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["公告"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/notice/create": {
+      "post": {
+        "operationId": "NoticeController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NoticeCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["公告"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/notice/update/{id}": {
+      "put": {
+        "operationId": "NoticeController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NoticeUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["公告"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/notice/destroy/{id}": {
+      "delete": {
+        "operationId": "NoticeController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["公告"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/message/list": {
+      "get": {
+        "operationId": "MessageController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["站内消息"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/message/page": {
+      "get": {
+        "operationId": "MessageController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["站内消息"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/message/info/{id}": {
+      "get": {
+        "operationId": "MessageController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["站内消息"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/message/create": {
+      "post": {
+        "operationId": "MessageController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MessageCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["站内消息"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/message/update/{id}": {
+      "put": {
+        "operationId": "MessageController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MessageUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["站内消息"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/message/destroy/{id}": {
+      "delete": {
+        "operationId": "MessageController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["站内消息"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/task/list": {
+      "get": {
+        "operationId": "TaskController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["任务"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/task/page": {
+      "get": {
+        "operationId": "TaskController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["任务"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/task/info/{id}": {
+      "get": {
+        "operationId": "TaskController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["任务"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/task/create": {
+      "post": {
+        "operationId": "TaskController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/TaskCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["任务"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/task/update/{id}": {
+      "put": {
+        "operationId": "TaskController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/TaskUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["任务"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/task/destroy/{id}": {
+      "delete": {
+        "operationId": "TaskController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["任务"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/feedback/list": {
+      "get": {
+        "operationId": "FeedbackController_list",
+        "summary": "查询列表",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户反馈"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/feedback/page": {
+      "get": {
+        "operationId": "FeedbackController_page",
+        "summary": "查询分页",
+        "parameters": [
+          {
+            "name": "id",
+            "required": false,
+            "in": "query",
+            "description": "主键id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "createTime",
+            "required": false,
+            "in": "query",
+            "description": "创建时间",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "orgId",
+            "required": false,
+            "in": "query",
+            "description": "机构id",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "当前页",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "每页数量",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "返回字段选择，用逗号隔开",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户反馈"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/feedback/info/{id}": {
+      "get": {
+        "operationId": "FeedbackController_info",
+        "summary": "查询详情",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户反馈"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/feedback/create": {
+      "post": {
+        "operationId": "FeedbackController_create",
+        "summary": "创建",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/FeedbackCreateDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["用户反馈"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/feedback/update/{id}": {
+      "put": {
+        "operationId": "FeedbackController_update",
+        "summary": "更新信息",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/FeedbackUpdateDTO" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户反馈"],
+        "security": [{ "bearer": [] }]
+      }
+    },
+    "/system/feedback/destroy/{id}": {
+      "delete": {
+        "operationId": "FeedbackController_destroy",
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["用户反馈"],
+        "security": [{ "bearer": [] }]
+      }
+    }
+  },
+  "info": {
+    "title": "数字化物业平台",
+    "description": "数字化物业平台接口文档",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [{ "url": "/api" }],
+  "components": {
+    "securitySchemes": {
+      "bearer": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http" }
+    },
+    "schemas": {
+      "UserCreateDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "用户名，不输入将自动生成临时名称"
+          },
+          "email": { "type": "string", "description": "邮箱" },
+          "headImg": {
+            "type": "string",
+            "description": "头像，不输入将取默认"
+          },
+          "remark": { "type": "string", "description": "备注" },
+          "gid": { "type": "string", "description": "用户组id" },
+          "phone": { "type": "string", "description": "手机号码" },
+          "password": { "type": "string", "description": "密码" }
+        },
+        "required": ["gid", "phone", "password"]
+      },
+      "UserUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "用户名，不输入将自动生成临时名称"
+          },
+          "email": { "type": "string", "description": "邮箱" },
+          "headImg": {
+            "type": "string",
+            "description": "头像，不输入将取默认"
+          },
+          "remark": { "type": "string", "description": "备注" }
+        }
+      },
+      "UserGroupCreateDTO": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "分组名称" },
+          "orgId": { "type": "string", "description": "组织id" },
+          "pid": { "type": "string", "description": "上级分组id" },
+          "orderNum": { "type": "number", "description": "排序" }
+        },
+        "required": ["name", "orgId", "pid", "orderNum"]
+      },
+      "UserGroupUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "用户分组名称" }
+        }
+      },
+      "RoleCreateDTO": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "角色名" },
+          "gid": { "type": "string", "description": "角色组id" }
+        },
+        "required": ["gid"]
+      },
+      "RoleUpdateDTO": {
+        "type": "object",
+        "properties": { "name": { "type": "string", "description": "角色名" } }
+      },
+      "RoleGroupCreateDTO": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "分组名称" },
+          "orgId": { "type": "string", "description": "组织id" },
+          "pid": { "type": "string", "description": "上级分组id" },
+          "orderNum": { "type": "number", "description": "排序" }
+        },
+        "required": ["name", "orgId", "pid", "orderNum"]
+      },
+      "RoleGroupUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "角色分组名称" },
+          "pid": { "type": "string", "description": "角色组父id" }
+        }
+      },
+      "LoginDTO": {
+        "type": "object",
+        "properties": {
+          "captchaId": { "type": "string", "description": "验证码ID" },
+          "verifyCode": {
+            "type": "string",
+            "description": "验证码",
+            "default": 1234
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名",
+            "default": "15813880161"
+          },
+          "password": {
+            "type": "string",
+            "description": "密码",
+            "default": "123456"
+          }
+        },
+        "required": ["captchaId", "verifyCode", "username", "password"]
+      },
+      "RegisterDTO": {
+        "type": "object",
+        "properties": {
+          "captchaId": { "type": "string", "description": "验证码ID" },
+          "verifyCode": {
+            "type": "string",
+            "description": "验证码",
+            "default": 1234
+          },
+          "phone": { "type": "string", "description": "手机号码" },
+          "password": { "type": "string", "description": "短信密码" }
+        },
+        "required": ["captchaId", "verifyCode", "phone", "password"]
+      },
+      "CaptchaDTO": {
+        "type": "object",
+        "properties": {
+          "captchaId": { "type": "string", "description": "验证码ID" },
+          "verifyCode": {
+            "type": "string",
+            "description": "验证码",
+            "default": 1234
+          }
+        },
+        "required": ["captchaId", "verifyCode"]
+      },
+      "ImgCaptchaDTO": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "类型",
+            "enum": ["svg", "base64"],
+            "default": "svg"
+          },
+          "width": { "type": "number", "description": "宽度", "default": 300 },
+          "height": { "type": "number", "description": "高度", "default": 500 }
+        }
+      },
+      "SmsCaptchaDTO": {
+        "type": "object",
+        "properties": {
+          "captchaId": { "type": "string", "description": "验证码ID" },
+          "verifyCode": {
+            "type": "string",
+            "description": "验证码",
+            "default": 1234
+          },
+          "phone": { "type": "string", "description": "手机号码" }
+        },
+        "required": ["captchaId", "verifyCode", "phone"]
+      },
+      "RefreshTokenDTO": {
+        "type": "object",
+        "properties": {
+          "refreshToken": { "type": "string", "description": "刷新TOKEN" }
+        },
+        "required": ["refreshToken"]
+      },
+      "OrgCreateDTO": { "type": "object", "properties": {} },
+      "OrgUpdateDTO": { "type": "object", "properties": {} },
+      "PermCreateDTO": {
+        "type": "object",
+        "properties": {
+          "orgId": {
+            "type": "string",
+            "description": "机构id，默认从当前登录用户信息中获取"
+          }
+        }
+      },
+      "PermUpdateDTO": { "type": "object", "properties": {} },
+      "ElementCreateDTO": {
+        "type": "object",
+        "properties": {
+          "perms": {
+            "description": "所属权限组",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "name": { "type": "string", "description": "名称" },
+          "code": { "type": "string", "description": "编码" },
+          "pid": { "type": "string", "description": "上级id" },
+          "route": { "type": "string", "description": "路由地址" },
+          "type": { "type": "number", "description": "资源类型" },
+          "icon": { "type": "string", "description": "图标类名" },
+          "index": { "type": "number", "description": "序号" },
+          "path": { "type": "string", "description": "资源地址不能为空" },
+          "isMicro": { "type": "boolean", "description": "是否微应用" },
+          "isShow": { "type": "boolean", "description": "是否显示" }
+        },
+        "required": ["name", "code", "pid", "type", "index", "isShow"]
+      },
+      "ElementUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "perms": {
+            "description": "所属权限组",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "name": { "type": "string", "description": "名称" },
+          "code": { "type": "string", "description": "编码" },
+          "pid": { "type": "string", "description": "上级id" },
+          "route": { "type": "string", "description": "路由地址" },
+          "type": { "type": "number", "description": "资源类型" },
+          "icon": { "type": "string", "description": "图标类名" },
+          "index": { "type": "number", "description": "序号" },
+          "path": { "type": "string", "description": "资源地址不能为空" },
+          "isMicro": { "type": "boolean", "description": "是否微应用" },
+          "isShow": { "type": "boolean", "description": "是否显示" }
+        }
+      },
+      "OrgConfCreateDTO": { "type": "object", "properties": {} },
+      "OrgConfUpdateDTO": { "type": "object", "properties": {} },
+      "OrderCreateDTO": { "type": "object", "properties": {} },
+      "OrderUpdateDTO": { "type": "object", "properties": {} },
+      "BillCreateDTO": { "type": "object", "properties": {} },
+      "BillUpdateDTO": { "type": "object", "properties": {} },
+      "BillPayModeCreateDTO": { "type": "object", "properties": {} },
+      "AssetCreateDTO": {
+        "type": "object",
+        "properties": {
+          "gid": { "type": "string", "description": "分组id" },
+          "name": { "type": "string", "description": "名称" },
+          "type": { "type": "string", "description": "类型" },
+          "cover": { "type": "string", "description": "封面图" },
+          "pictures": { "type": "string", "description": "其他描述图" },
+          "status": { "type": "string", "description": "当前状态" },
+          "configs": {
+            "type": "string",
+            "description": "配置信息，组成、水电、电器等"
+          }
+        },
+        "required": ["gid", "name"]
+      },
+      "AssetUpdateDTO": { "type": "object", "properties": {} },
+      "AssetGroupCreateDTO": { "type": "object", "properties": {} },
+      "AssetGroupUpdateDTO": { "type": "object", "properties": {} },
+      "CustomerCreateDTO": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "名称" },
+          "tel": { "type": "string", "description": "手机号码" },
+          "idCard": { "type": "string", "description": "身份证号" },
+          "province": { "type": "string", "description": "省" },
+          "city": { "type": "string", "description": "市" },
+          "district": { "type": "string", "description": "区" },
+          "address": { "type": "string", "description": "地址" }
+        }
+      },
+      "CustomerUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "名称" },
+          "tel": { "type": "string", "description": "手机号码" },
+          "idCard": { "type": "string", "description": "身份证号" },
+          "province": { "type": "string", "description": "省" },
+          "city": { "type": "string", "description": "市" },
+          "district": { "type": "string", "description": "区" },
+          "address": { "type": "string", "description": "地址" }
+        }
+      },
+      "IdsDTO": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "description": "id",
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["ids"]
+      },
+      "TAssetCommonUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "key": { "type": "string", "description": "字段" },
+          "value": { "type": "string", "description": "值" }
+        },
+        "required": ["key", "value"]
+      },
+      "TAssetInfoUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "bill_time": { "type": "string", "description": "出账日期" }
+        },
+        "required": ["bill_time"]
+      },
+      "TAssetUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "bill": { "type": "string", "description": "账期" },
+          "rent": { "type": "number", "description": "房租" },
+          "power": { "type": "number", "description": "电" },
+          "water": { "type": "number", "description": "水" },
+          "gas": { "type": "number", "description": "燃气" },
+          "property": { "type": "number", "description": "物业" },
+          "elevator": { "type": "number", "description": "电梯" },
+          "tv": { "type": "number", "description": "电视" },
+          "health": { "type": "number", "description": "卫生" },
+          "other": { "type": "number", "description": "其他" },
+          "net": { "type": "number", "description": "网络" }
+        },
+        "required": ["bill"]
+      },
+      "ConfCreateDTO": { "type": "object", "properties": {} },
+      "ConfUpdateDTO": { "type": "object", "properties": {} },
+      "DictCreateDTO": { "type": "object", "properties": {} },
+      "DictUpdateDTO": { "type": "object", "properties": {} },
+      "NoticeCreateDTO": { "type": "object", "properties": {} },
+      "NoticeUpdateDTO": { "type": "object", "properties": {} },
+      "MessageCreateDTO": { "type": "object", "properties": {} },
+      "MessageUpdateDTO": { "type": "object", "properties": {} },
+      "TaskCreateDTO": { "type": "object", "properties": {} },
+      "TaskUpdateDTO": { "type": "object", "properties": {} },
+      "FeedbackCreateDTO": { "type": "object", "properties": {} },
+      "FeedbackUpdateDTO": { "type": "object", "properties": {} }
+    }
+  }
+}
