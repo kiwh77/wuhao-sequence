@@ -38,12 +38,12 @@ export class Creator {
       log.configSource = 'cli'
     } else {
       const definePaths = [
-        'mariorc.yml',
-        'mariorc.yaml',
-        'mario.config.js',
-        'mariorc.json',
-        '.mariorc',
-        'mariorc.js'
+        'sequence.config.js',
+        'sequencerc.js',
+        'sequencerc.yml',
+        'sequencerc.yaml',
+        'sequencerc.json',
+        '.sequencerc'
       ]
       const defineConfig = await readConfigFiles(
         definePaths,

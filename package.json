@@ -6,7 +6,8 @@
   "type": "module",
   "types": "dist/types",
   "bin": {
-    "mario-create": "dist/cli"
+    "sequence": "dist/cli",
+    "seq": "dist/cli"
   },
   "scripts": {
     "serve": "tsc -w",

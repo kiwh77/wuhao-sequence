@@ -12,12 +12,12 @@ async function initialize(argv: string[]) {
   program
     .name(pkg.name)
     .version(pkg.version)
-    .usage('mario-create -i <OpenApi Url> -o <Target Path>')
+    .usage('sequence -i <OpenApi Url> -o <Target Path>')
     .option('-i | --input <url...>', 'input file url')
     .option('-o | --output <path>', 'output file path', 'src/apis')
     .addHelpText(
       'afterAll',
-      `define mario.config.js or .mariorc or mariorc.js or mariorc.json in your project root dir
+      `define sequence.config.js or .sequencerc or sequencerc.js or sequencerc.json in your project root dir
 eg.
 {
   modules: [

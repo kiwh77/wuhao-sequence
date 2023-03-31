@@ -1,15 +1,5 @@
-# MarioCreator
+# Wuhao Sequence
 
-用途：让序列化数据根据模板构建
+[中文](README_CN.md) | English
 
-##
-
-- 1、读取配置文件
-  支持不同配置文件类型
-- 2、解析配置文件
-  路径处理
-- 3、加载序列化数据
-- 4、加载配置中插件、模板等信息
-  全局插件
-  模块插件
-- 5、根据模板转化
+Serialize data from template output
