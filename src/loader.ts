@@ -2,6 +2,10 @@ import Fs from 'fs'
 import Path from 'path'
 import Http from 'http'
 import { load as loadYaml } from 'js-yaml'
+import { fileURLToPath } from 'url'
+
+export const getFileName = () => fileURLToPath(import.meta.url)
+export const getDirName = () => Path.dirname(getFileName())
 
 export async function readConfigFiles(paths: string[], cb?: Function) {
   let result
@@ -11,15 +15,10 @@ export async function readConfigFiles(paths: string[], cb?: Function) {
     const path = Path.join(process.cwd(), name)
 
     if (name.endsWith('.js')) {
-      try {
-        const importResult = await import(path)
-
-        if (importResult && importResult.default) result = importResult.default
-      } catch (e) {}
+      const { default: importResult } = await import(path)
+      if (importResult) result = importResult
     } else {
-      try {
-        result = await readFile(path)
-      } catch {}
+      result = await readFile(path)
     }
     index++
     if (result) cb(name)

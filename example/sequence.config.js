@@ -1,14 +1,12 @@
-import OpenApiV3 from './dist/plugins/openApiV3/index.js'
-import { OpenApiV3ToService } from './dist/templates/mario_service/index.js'
-//
+import OpenApiV3 from 'sequence-plugin-openapiv3-network'
+
 export default {
   debug: true,
   modules: [
     {
-      input: ['./example/openapi.json'],
-      output: '/example/serialize',
-      plugins: [OpenApiV3],
-      template: [OpenApiV3ToService]
+      input: ['openapi.yml'],
+      output: 'sequence',
+      plugins: [OpenApiV3]
     }
   ]
 }

@@ -1,58 +1,60 @@
 import { Module } from './module'
 import { CommandModule } from './config'
 
-export type PluginAction = 'merge' | 'compile'
+export type PluginAction = 'merge' | 'convert'
 
-export interface iPlugin extends Partial<Record<PluginAction, Function>> {
+export interface iPlugin
+  extends Partial<
+    Record<PluginAction, (module: CommandModule, grand: any) => {}>
+  > {
   name?: string
-  handle(sources: any[], module: CommandModule): any
+}
+
+function isClass(cls: unknown) {
+  return cls && /^class|function/.test(cls.toString())
+}
+
+function isFunction(func: unknown) {
+  return func && typeof func === 'function'
 }
 
 export class PluginPack {
-  plugins: {
-    [key: string]: iPlugin
-  } = {}
-
-  async load(plugins: Array<iPlugin | string>) {
-    for (let i = 0; i < plugins.length; i++) {
-      const plugin = plugins[i]
-      try {
-        if (typeof plugin === 'string') {
-          const { default: instance } = await import(plugin)
-          if (instance && typeof instance === 'function') {
-            this.plugins[plugin] = instance
-          }
-        } else if (
-          Object.prototype.toString.apply(plugin) === '[object Object]' &&
-          plugin.name
-        ) {
-          this.plugins[plugin.name] = plugin
-        }
-      } catch {}
+  async load(plugin: CommandModule['plugins'][0]) {
+    let result
+    // path
+    if (typeof plugin === 'string') {
+      const { default: instance } = await import(plugin)
+      // Class or Function
+      if (isClass(instance)) result = new instance()
+      // Object or Class interface
+    } else if (
+      Object.prototype.toString.apply(plugin) === '[object Object]' &&
+      'name' in (plugin as iPlugin)
+    ) {
+      result = plugin
+    } else if (isClass(plugin)) {
+      result = new (plugin as any)()
     }
+    return result
   }
 
   async exec(module: Module, action: PluginAction) {
     let i = 0
     let result
     while (i < module?.plugins.length) {
-      const pluginKey = module.plugins[i]
+      const configPlugin = module.plugins[i]
 
-      const plugin =
-        typeof pluginKey === 'string'
-          ? this.plugins[pluginKey]
-          : typeof pluginKey === 'function'
-          ? pluginKey
-          : Object.prototype.toString.apply(pluginKey) === '[object Object]'
-          ? pluginKey
-          : pluginKey?.name
-          ? this.plugins[pluginKey.name]
-          : null
-      try {
-        if (plugin && plugin[action] && typeof plugin[action] === 'function') {
-          result = await plugin[action](module, result, module.sources)
-        }
-      } catch {}
+      const plugin: iPlugin = await this.load(configPlugin)
+
+      let func
+      if (plugin && plugin[action]) {
+        func = plugin[action].bind(plugin)
+      } else if (isFunction(plugin)) {
+        func = plugin as Function
+      }
+      if (isFunction(func)) {
+        result = await func(module, result)
+      }
       i++
     }
     return result

@@ -40,6 +40,7 @@ eg.
 }
 
 initialize(process.argv).then(async ([, options]) => {
+  let debug = false
   try {
     useBanner()
 
@@ -51,13 +52,13 @@ initialize(process.argv).then(async ([, options]) => {
       initLog.moduleLength + ' modules from ' + initLog.configSource
     )
 
-    const debug = initLog.debug
+    debug = initLog.debug
 
     taskList.add('Load modules')
     const loadLog = await creator.load()
     taskList.complete(loadLog.length + ' sources')
 
-    if (debug) {
+    if (debug && loadLog.length > 0) {
       const loadLogTable = logsets.table({
         maxColWidth: 120
       })
@@ -73,15 +74,15 @@ initialize(process.argv).then(async ([, options]) => {
     await creator.merge()
     taskList.complete('OK')
 
-    taskList.add('Compile')
-    await creator.compile()
+    taskList.add('Convert')
+    await creator.convert()
     taskList.complete('OK')
 
     taskList.add('Write file')
     const result = await creator.write()
     taskList.complete(result.length + ' files')
 
-    if (debug) {
+    if (debug && result.length > 0) {
       const resultLogTable = logsets.table({
         maxColWidth: 120
       })
@@ -92,7 +93,9 @@ initialize(process.argv).then(async ([, options]) => {
       resultLogTable.render()
     }
   } catch (e) {
+    taskList.error()
     logsets.error(e.message)
+    if (debug) console.error(e)
     process.exitCode = 1
   }
 })

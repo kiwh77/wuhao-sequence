@@ -2,16 +2,12 @@ import { OptionValues } from 'commander'
 import { PluginPack } from './plugin.js'
 import { CommandOptions } from './config.js'
 import { readConfigFiles, resolvePath, verifyPath } from './loader.js'
-import { Generator } from './generate.js'
 import { Module } from './module.js'
-import { TemplatePack } from './template.js'
 
 export class Creator {
   config: CommandOptions
-  generator: Generator
 
   plugin: PluginPack = new PluginPack()
-  template: TemplatePack = new TemplatePack()
   modules: Module[]
 
   /** 转换参数 */
@@ -27,11 +23,11 @@ export class Creator {
       modules: []
     }
     this.modules = []
+    // cli args
     if (options.input) {
       const module = {
         input: options.input.map((url: string) => resolvePath(url)),
-        output: resolvePath(options.output),
-        template: options.template
+        output: resolvePath(options.output)
       }
       this.modules.push(new Module(module))
       config.modules.push(module)
@@ -52,20 +48,13 @@ export class Creator {
         }
       )
       if (!defineConfig || defineConfig.length === 0) {
-        console.log('Not find defined config file!')
-        return
+        throw new Error('Not find config file!')
       }
       config = defineConfig
     }
     config.modules = config.modules.map(module => {
       module.input = (module.input || []).map(verifyPath)
-      module.output = verifyPath(module.output)
-      if (module.plugins && module.plugins.length > 0) {
-        this.plugin.load(module.plugins)
-      }
-      if (module.template) {
-        this.template.load(module.template)
-      }
+      module.output = verifyPath(module.output || './_sequence')
       this.modules.push(new Module(module))
       return module
     })
@@ -83,7 +72,7 @@ export class Creator {
     for (let i = 0; i < this.modules.length; i++) {
       const module = this.modules[i]
       await module.read()
-      log.push(module.input)
+      if (module.input.length > 0) log.push(module.input)
     }
     return log
   }
@@ -95,11 +84,11 @@ export class Creator {
     }
     return result
   }
-  async compile() {
+  async convert() {
     const result = []
     for (let i = 0; i < this.modules.length; i++) {
       const module = this.modules[i]
-      result.push(await module.compile(this.template))
+      result.push(await module.convert(this.plugin))
     }
     return result
   }

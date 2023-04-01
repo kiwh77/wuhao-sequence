@@ -1,13 +1,11 @@
-import { TemplatePack } from './template'
 import { PluginPack } from './plugin'
 import { CommandModule } from './config'
-import { readFile, writePath, resolvePath } from './loader.js'
+import { readFile, writePath } from './loader.js'
 import Path from 'path'
 
 export class Module {
   input: CommandModule['input']
   output: CommandModule['output']
-  template: CommandModule['template']
   plugins: CommandModule['plugins']
   overwrite: Boolean
   sources: {
@@ -16,11 +14,10 @@ export class Module {
   currSource: any
 
   constructor(props: CommandModule) {
-    this.input = props.input
+    this.input = props.input || []
     this.output = props.output
-    this.template = props.template
     this.plugins = props.plugins
-    this.overwrite = props.overwriteFile
+    this.overwrite = props.overwrite
   }
 
   async read() {
@@ -38,8 +35,9 @@ export class Module {
     return this.currSource
   }
 
-  compile(template: TemplatePack) {
-    this.currSource = template.compile(this.template, this.currSource)
+  async convert(plugin: PluginPack) {
+    this.currSource = await plugin.exec(this, 'convert')
+    return this.currSource
   }
 
   write() {

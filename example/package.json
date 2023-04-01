@@ -1,0 +1,13 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "convert": "npx sequence"
+  },
+  "dependencies": {
+    "sequence-plugin-openapiv3-network": "link:../../sequence-plugin-openapiv3",
+    "wuhao-sequence": "link:.."
+  }
+}
